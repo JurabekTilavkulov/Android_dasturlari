@@ -69,6 +69,7 @@ public class AdapterfragFront extends RecyclerView.Adapter<AdapterfragFront.Frnt
 
     public class FrntViewHolder extends RecyclerView.ViewHolder{
         private TextView name,disc;
+
         private ImageView image;
         public FrntViewHolder(@NonNull View itemView) {
             super(itemView);

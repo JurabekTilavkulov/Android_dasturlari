@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -20,11 +21,17 @@ import java.util.ArrayList;
 public class AdapterfragFront extends RecyclerView.Adapter<AdapterfragFront.FrntViewHolder> {
    private ArrayList<ModelClass>list;
    private Context context;
+   private OnItemClickList listener;
 
 
-    public AdapterfragFront(ArrayList<ModelClass> list, Context context) {
+    public AdapterfragFront(ArrayList<ModelClass> list, Context context,OnItemClickList listener) {
         this.list = list;
         this.context = context;
+        this.listener = listener;
+    }
+
+    public void setListener(OnItemClickList listener) {
+        this.listener = listener;
     }
 
     @NonNull
@@ -44,30 +51,12 @@ public class AdapterfragFront extends RecyclerView.Adapter<AdapterfragFront.Frnt
         holder.image.setImageResource(image);
         holder.name.setText(name);
         holder.disc.setText(disc);
+
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                switch (holder.getLayoutPosition()){
-                    case 0:Toast.makeText(context.getApplicationContext(),"0 item bosildi",Toast.LENGTH_LONG).show(); break;
-                    case 1: {
-                        Toast.makeText(context.getApplicationContext(),"1 item bosildi",Toast.LENGTH_LONG).show();
-
-                       FragmentBaqalar fragmentBaqalar=new FragmentBaqalar();
-//
-//                    //FragmentFront fragmentFront=new FragmentFront();
-
-//                    fragmentManager.beginTransaction()
-//                            .replace(R.id.fragment1,fragmentBaqalar,null)
-//                            .commit();
-                            } break;
-                    case 2: Toast.makeText(context.getApplicationContext(),"2 item bosildi",Toast.LENGTH_LONG).show(); break;
-                    case 3: Toast.makeText(context.getApplicationContext(),"3 item bosildi",Toast.LENGTH_LONG).show();
-                    }
-
-
-                }
-               // Toast.makeText(context.getApplicationContext(), "Item "+p+" bosildi",Toast.LENGTH_LONG).show();
-
+                listener.onItemCLick(p);
+            }
         });
 
     }
@@ -89,6 +78,10 @@ public class AdapterfragFront extends RecyclerView.Adapter<AdapterfragFront.Frnt
         }
     }
     private  void replaceFragment(Fragment fragment){
-        //FragmentTransaction transaction=
+
+    }
+
+    interface OnItemClickList{
+        void onItemCLick(int i);
     }
 }

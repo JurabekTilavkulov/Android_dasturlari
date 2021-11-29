@@ -78,7 +78,7 @@ public class AdapterfragFront extends RecyclerView.Adapter<AdapterfragFront.Frnt
             image=itemView.findViewById(R.id.rasm);
         }
     }
-    private  void replaceFragment(Fragment fragment){
+    private  void replaceFragment(Fragment fragment){  // ishlamadi
 
     }
 

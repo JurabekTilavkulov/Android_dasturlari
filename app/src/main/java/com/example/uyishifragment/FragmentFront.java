@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 public class FragmentFront extends Fragment implements AdapterfragFront.OnItemClickList{
+    private  int s;
 
    private ArrayList<ModelClass> list;
    private  AdapterfragFront adapter;

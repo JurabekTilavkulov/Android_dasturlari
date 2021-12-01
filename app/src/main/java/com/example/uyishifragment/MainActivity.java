@@ -17,6 +17,9 @@ public class MainActivity extends AppCompatActivity {
         FragmentManager fragmentManager=getSupportFragmentManager();
         fragmentManager.beginTransaction()
                 .replace(R.id.fragment1,fragmentFront,null)
+                .addToBackStack("tag")
                 .commit();
     }
+
+
 }

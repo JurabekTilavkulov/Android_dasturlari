@@ -48,8 +48,6 @@ public class FragmentBaqalar extends Fragment implements AdapterfragFront.OnItem
 
         }
 
-
-
     }
 
     @Override
@@ -65,6 +63,7 @@ public class FragmentBaqalar extends Fragment implements AdapterfragFront.OnItem
         FragmentManager fragmentManager = getParentFragmentManager();
         fragmentManager.beginTransaction()
                 .replace(R.id.fragment1, umumiyKlass, null)
+                .addToBackStack(null)
                 .commit();
 
     }

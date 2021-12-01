@@ -38,8 +38,6 @@ public class FragmentFront extends Fragment implements AdapterfragFront.OnItemCl
         recyclerView.setAdapter(adapter);
 
         return view;
-
-
     }
     public void loaddata(){
         list=new ArrayList<>();
@@ -85,33 +83,35 @@ public class FragmentFront extends Fragment implements AdapterfragFront.OnItemCl
        String s=name.getText().toString();
         Toast.makeText(getContext(), "position"+i+"va ko'rinish "+s, Toast.LENGTH_SHORT).show();
 
+
         switch (i){
             case 0:  FragmentQushlar fragmentQushlar=new FragmentQushlar();
 
                 FragmentManager fragmentManager=getParentFragmentManager();
                 fragmentManager.beginTransaction()
-                        .replace(R.id.fragment1,fragmentQushlar,null) // boshqa bir ko'rsatish kk bo'lgan layout kk
+                        .replace(R.id.fragment1,fragmentQushlar,null)
+                        .addToBackStack(null)// boshqa bir ko'rsatish kk bo'lgan layout kk
                         .commit(); break;
             case 1: FragmentBaqalar fragmentBaqalar=new FragmentBaqalar();
 
                 FragmentManager fragmentManager1=getParentFragmentManager();
                 fragmentManager1.beginTransaction()
                         .replace(R.id.fragment1,fragmentBaqalar,null) // boshqa bir ko'rsatish kk bo'lgan layout kk
-                        .commit();  break;
+                        .addToBackStack(null).commit();  break;
             case 2: FragmentBayroq fragmentBayroq=new FragmentBayroq();
 
                 FragmentManager fragmentManager2=getParentFragmentManager();
                 fragmentManager2.beginTransaction()
                         .replace(R.id.fragment1,fragmentBayroq,null) // boshqa bir ko'rsatish kk bo'lgan layout kk
-                        .commit(); break;
+                        .addToBackStack(null).commit(); break;
             case 3:  FragmentTaom fragmentTaom=new FragmentTaom();
 
                 FragmentManager fragmentManager3=getParentFragmentManager();
                 fragmentManager3.beginTransaction()
                         .replace(R.id.fragment1,fragmentTaom,null) // boshqa bir ko'rsatish kk bo'lgan layout kk
-                        .commit(); break;
+                        .addToBackStack(null).commit(); break;
         }
-
-
     }
 }
+
+

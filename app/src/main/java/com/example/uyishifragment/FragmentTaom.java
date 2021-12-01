@@ -64,6 +64,7 @@ public class FragmentTaom extends Fragment implements AdapterfragFront.OnItemCli
         FragmentManager fragmentManager = getParentFragmentManager();
         fragmentManager.beginTransaction()
                 .replace(R.id.fragment1, umumiyKlass, null)
+                .addToBackStack(null)
                 .commit();
 
     }

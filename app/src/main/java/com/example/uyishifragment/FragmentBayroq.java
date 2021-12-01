@@ -26,7 +26,6 @@ public class FragmentBayroq  extends Fragment implements AdapterfragFront.OnItem
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragmentfront_layout,container,false);
 
-
         recyclerView=view.findViewById(R.id.fr1r);
         loaddata();
         adapter=new AdapterfragFront(list,inflater.getContext());// adapterga list dagi malumotlarni jo'natdi
@@ -57,6 +56,7 @@ public class FragmentBayroq  extends Fragment implements AdapterfragFront.OnItem
             FragmentManager fragmentManager=getParentFragmentManager();
             fragmentManager.beginTransaction()
                     .replace(R.id.fragment1,umumiyKlass,null)
+                    .addToBackStack(null)
                     .commit();
 
     }

@@ -14,11 +14,11 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
 public class UmumiyKlass extends Fragment {
-    private TextView name, discription;
-    private ImageView imageView;
+       private TextView name, discription;
+       private ImageView imageView;
 
-     private String name1, disc1;
-   private int image1;
+       private String name1, disc1;
+       private int image1;
 
     public UmumiyKlass(String name1, String disc1, int image1) {
         this.name1 = name1;
@@ -38,8 +38,6 @@ public class UmumiyKlass extends Fragment {
         discription.setText(disc1);
         imageView.setImageResource(image1);
         Toast.makeText(getContext(), "Umumiy klasgacha yetib keldi", Toast.LENGTH_SHORT).show();
-
-
 
         return v;
     }

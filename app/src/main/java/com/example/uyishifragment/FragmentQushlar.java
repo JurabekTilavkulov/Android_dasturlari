@@ -44,11 +44,7 @@ public class FragmentQushlar extends Fragment implements AdapterfragFront.OnItem
             list.add(new ModelClass("Burgut" + i + 1, "qushlar sinfiga oid jonivorlar, yer yuzining xar bir burchagiga tarqalgan", R.drawable.burgut));
             list.add(new ModelClass("Kabutar" + i + 2, "qushlar sinfiga oid jonivorlar, yer yuzining xar bir burchagiga tarqalgan", R.drawable.kabutar));
             list.add(new ModelClass("Chig'anay" + i + 3, "qushlar sinfiga oid jonivorlar, yer yuzining xar bir burchagiga tarqalgan", R.drawable.chiganay));
-
         }
-
-
-
     }
 
     @Override
@@ -64,7 +60,7 @@ public class FragmentQushlar extends Fragment implements AdapterfragFront.OnItem
         FragmentManager fragmentManager = getParentFragmentManager();
         fragmentManager.beginTransaction()
                 .replace(R.id.fragment1, umumiyKlass, null)
+                .addToBackStack(null)
                 .commit();
-
     }
 }

@@ -21,16 +21,17 @@ import java.util.ArrayList;
 public class AdapterfragFront extends RecyclerView.Adapter<AdapterfragFront.FrntViewHolder> {
    private ArrayList<ModelClass>list;
    private Context context;
-   private OnItemClickList listener;
+   private OnItemClickList listener; // adapterga OnItemClickList klasga oid, turiga oid listener o'zgaruvchi elon qilamiz
 
 
-    public AdapterfragFront(ArrayList<ModelClass> list, Context context,OnItemClickList listener) {
+    public AdapterfragFront(ArrayList<ModelClass> list, Context context) {
         this.list = list;
         this.context = context;
-        this.listener = listener;
+
     }
 
     public void setListener(OnItemClickList listener) {
+
         this.listener = listener;
     }
 
@@ -55,7 +56,7 @@ public class AdapterfragFront extends RecyclerView.Adapter<AdapterfragFront.Frnt
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                listener.onItemCLick(p);
+                listener.onItemCLick(p,v);
             }
         });
 
@@ -78,11 +79,11 @@ public class AdapterfragFront extends RecyclerView.Adapter<AdapterfragFront.Frnt
             image=itemView.findViewById(R.id.rasm);
         }
     }
-    private  void replaceFragment(Fragment fragment){  // ishlamadi
 
-    }
 
-    interface OnItemClickList{
-        void onItemCLick(int i);
+
+
+    interface OnItemClickList{   // interface elon qilinib unga bir ishlamas funksiya ochib qo'yamiz qayta yozish uchun
+        void onItemCLick(int i, View v);
     }
 }

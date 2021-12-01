@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -16,7 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 public class FragmentFront extends Fragment implements AdapterfragFront.OnItemClickList{
-    private  int s;
+   //FragmentFront ning otasi Interface OnItemClickList elon qilingan
 
    private ArrayList<ModelClass> list;
    private  AdapterfragFront adapter;
@@ -29,11 +31,12 @@ public class FragmentFront extends Fragment implements AdapterfragFront.OnItemCl
         View view=inflater.inflate(R.layout.fragmentfront_layout,container,false);
         recyclerView=view.findViewById(R.id.fr1r);
         loaddata();
-        adapter=new AdapterfragFront(list,inflater.getContext(),this::onItemCLick);
-
+        adapter=new AdapterfragFront(list,inflater.getContext());// adapterga list dagi malumotlarni jo'natdi
+        adapter.setListener((AdapterfragFront.OnItemClickList)this); //bosilishini taminlaydi
         GridLayoutManager gridLayoutManager=new GridLayoutManager(inflater.getContext(),2);
         recyclerView.setLayoutManager(gridLayoutManager);
         recyclerView.setAdapter(adapter);
+
         return view;
 
 
@@ -75,12 +78,40 @@ public class FragmentFront extends Fragment implements AdapterfragFront.OnItemCl
 
     }
 
-    @Override
-    public void onItemCLick(int i) {
-        FragmentBaqalar fragmentFront=new FragmentBaqalar();
-        FragmentManager fragmentManager=getChildFragmentManager();
-        fragmentManager.beginTransaction()
-                .replace(R.id.fragment1,fragmentFront,null)
-                .commit();
+    @Override //v-itemview_fragmentLayout dan malumot olmoqda
+    public void onItemCLick(int i, View v) {// interfacega override qilib yozmoqda
+        // position i orqali Item dagi malumotlarni olib foydalanish kk
+       TextView name=v.findViewById(R.id.nom);
+       String s=name.getText().toString();
+        Toast.makeText(getContext(), "position"+i+"va ko'rinish "+s, Toast.LENGTH_SHORT).show();
+
+        switch (i){
+            case 0:  FragmentQushlar fragmentQushlar=new FragmentQushlar();
+
+                FragmentManager fragmentManager=getParentFragmentManager();
+                fragmentManager.beginTransaction()
+                        .replace(R.id.fragment1,fragmentQushlar,null) // boshqa bir ko'rsatish kk bo'lgan layout kk
+                        .commit(); break;
+            case 1: FragmentBaqalar fragmentBaqalar=new FragmentBaqalar();
+
+                FragmentManager fragmentManager1=getParentFragmentManager();
+                fragmentManager1.beginTransaction()
+                        .replace(R.id.fragment1,fragmentBaqalar,null) // boshqa bir ko'rsatish kk bo'lgan layout kk
+                        .commit();  break;
+            case 2: FragmentBayroq fragmentBayroq=new FragmentBayroq();
+
+                FragmentManager fragmentManager2=getParentFragmentManager();
+                fragmentManager2.beginTransaction()
+                        .replace(R.id.fragment1,fragmentBayroq,null) // boshqa bir ko'rsatish kk bo'lgan layout kk
+                        .commit(); break;
+            case 3:  FragmentTaom fragmentTaom=new FragmentTaom();
+
+                FragmentManager fragmentManager3=getParentFragmentManager();
+                fragmentManager3.beginTransaction()
+                        .replace(R.id.fragment1,fragmentTaom,null) // boshqa bir ko'rsatish kk bo'lgan layout kk
+                        .commit(); break;
+        }
+
+
     }
 }

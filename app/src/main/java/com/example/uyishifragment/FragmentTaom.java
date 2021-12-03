@@ -57,14 +57,15 @@ public class FragmentTaom extends Fragment implements AdapterfragFront.OnItemCli
         TextView name = v.findViewById(R.id.nom);
         TextView disc = v.findViewById(R.id.tavsif);
 
-        //int image1=image.getImageAlpha();
-        String name1 = name.getText().toString();
-        String disc1 = disc.getText().toString();
-        UmumiyKlass umumiyKlass = new UmumiyKlass(name1, disc1, R.drawable.flag);
+        int image1= list.get(i).getImage();
+        String name1 = list.get(i).getName();
+        String disc1 = list.get(i).getDisc();
+
+        UmumiyKlass umumiyKlass =  UmumiyKlass.getInstance(name1, disc1, image1);
         FragmentManager fragmentManager = getParentFragmentManager();
         fragmentManager.beginTransaction()
                 .replace(R.id.fragment1, umumiyKlass, null)
-                .addToBackStack(null)
+                .addToBackStack(null) // orqaga qaytish imkonini beradi
                 .commit();
 
     }

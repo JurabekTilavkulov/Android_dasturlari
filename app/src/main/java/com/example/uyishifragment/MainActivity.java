@@ -14,7 +14,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         FragmentFront fragmentFront=new FragmentFront();
-        FragmentManager fragmentManager=getSupportFragmentManager();
+
+       FragmentManager fragmentManager=getSupportFragmentManager();
         fragmentManager.beginTransaction()
                 .replace(R.id.fragment1,fragmentFront,null)
                 .addToBackStack("tag")

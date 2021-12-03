@@ -8,7 +8,7 @@ public class ModelClass {
     public ModelClass(String name, String disc, int image) {
         this.name = name;
         this.disc = disc;
-        Image = image;
+        this.Image = image;
     }
 
     public String getName() {

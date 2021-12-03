@@ -97,19 +97,22 @@ public class FragmentFront extends Fragment implements AdapterfragFront.OnItemCl
                 FragmentManager fragmentManager1=getParentFragmentManager();
                 fragmentManager1.beginTransaction()
                         .replace(R.id.fragment1,fragmentBaqalar,null) // boshqa bir ko'rsatish kk bo'lgan layout kk
-                        .addToBackStack(null).commit();  break;
+                        .addToBackStack(null) //orqaga qaytaradi
+                        .commit();  break;
             case 2: FragmentBayroq fragmentBayroq=new FragmentBayroq();
 
                 FragmentManager fragmentManager2=getParentFragmentManager();
                 fragmentManager2.beginTransaction()
                         .replace(R.id.fragment1,fragmentBayroq,null) // boshqa bir ko'rsatish kk bo'lgan layout kk
-                        .addToBackStack(null).commit(); break;
+                        .addToBackStack(null) //orqaga qaytaradi
+                        .commit(); break;
             case 3:  FragmentTaom fragmentTaom=new FragmentTaom();
 
                 FragmentManager fragmentManager3=getParentFragmentManager();
                 fragmentManager3.beginTransaction()
                         .replace(R.id.fragment1,fragmentTaom,null) // boshqa bir ko'rsatish kk bo'lgan layout kk
-                        .addToBackStack(null).commit(); break;
+                        .addToBackStack(null) //orqaga qataradi
+                        .commit(); break;
         }
     }
 }

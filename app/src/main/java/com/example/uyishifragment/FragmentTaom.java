@@ -1,6 +1,7 @@
 package com.example.uyishifragment;
 
 import android.os.Bundle;
+import android.transition.TransitionInflater;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +21,15 @@ public class FragmentTaom extends Fragment implements AdapterfragFront.OnItemCli
     private ArrayList<ModelClass> list;
     private AdapterfragFront adapter;
     private RecyclerView recyclerView;
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        TransitionInflater inflater = TransitionInflater.from(requireContext());
+        setEnterTransition(inflater.inflateTransition(R.transition.slide_right));
+
+    }
 
     @Nullable
     @Override

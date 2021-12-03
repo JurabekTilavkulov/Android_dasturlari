@@ -1,6 +1,7 @@
 package com.example.uyishifragment;
 
 import android.os.Bundle;
+import android.transition.TransitionInflater;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +21,15 @@ public class FragmentQushlar extends Fragment implements AdapterfragFront.OnItem
     private ArrayList<ModelClass> list;
     private AdapterfragFront adapter;
     private RecyclerView recyclerView;
+
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        TransitionInflater inflater = TransitionInflater.from(requireContext());
+        setEnterTransition(inflater.inflateTransition(R.transition.slide_right));
+    }
 
     @Nullable
     @Override
@@ -58,10 +68,20 @@ public class FragmentQushlar extends Fragment implements AdapterfragFront.OnItem
         String disc1 = list.get(i).getDisc();
 
         UmumiyKlass umumiyKlass =  UmumiyKlass.getInstance(name1, disc1, image1); // Umumiy Klassga qiymat jo'natyapmiz
+
         FragmentManager fragmentManager = getParentFragmentManager();
         fragmentManager.beginTransaction()
-                .replace(R.id.fragment1, umumiyKlass, null)
-                .addToBackStack(null)    // orqaga qaytishni taminlaydi
+                .setCustomAnimations(
+                        R.anim.slide_in,  // enter
+                        R.anim.fade_out,  // exit
+                        R.anim.fade_in,   // popEnter
+                        R.anim.slide_out  // popExit
+                )
+                .replace(R.id.fragment1, umumiyKlass)
+                .addToBackStack(null)
                 .commit();
+
+
+
     }
 }

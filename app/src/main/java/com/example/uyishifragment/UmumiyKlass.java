@@ -1,6 +1,7 @@
 package com.example.uyishifragment;
 
 import android.os.Bundle;
+import android.transition.TransitionInflater;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,7 +21,16 @@ public class UmumiyKlass extends Fragment {
        private String name1, disc1;
        private int image1;
 
-//    public UmumiyKlass(String name1, String disc1, int image1) {
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        TransitionInflater inflater = TransitionInflater.from(requireContext());
+        setEnterTransition(inflater.inflateTransition(R.transition.slide_right));
+    }
+
+
+    //    public UmumiyKlass(String name1, String disc1, int image1) {
 //        this.name1 = name1;
 //        this.disc1 = disc1;
 //        this.image1 = image1;

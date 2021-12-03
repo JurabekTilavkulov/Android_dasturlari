@@ -60,11 +60,18 @@ public class FragmentBaqalar extends Fragment implements AdapterfragFront.OnItem
         String name1 = list.get(i).getName();
         String disc1 = list.get(i).getDisc();
 
-        UmumiyKlass umumiyKlass =  UmumiyKlass.getInstance(name1, disc1, image1);
+        UmumiyKlass umumiyKlass =  UmumiyKlass.getInstance(name1, disc1, image1); // Umumiy Klassga qiymat jo'natyapmiz
+
         FragmentManager fragmentManager = getParentFragmentManager();
         fragmentManager.beginTransaction()
-                .replace(R.id.fragment1, umumiyKlass, null)
-                .addToBackStack(null) // orqaga qaytish imkonini beradi
+                .setCustomAnimations(
+                        R.anim.slide_in,  // enter
+                        R.anim.fade_out,  // exit
+                        R.anim.fade_in,   // popEnter
+                        R.anim.slide_out  // popExit
+                )
+                .replace(R.id.fragment1, umumiyKlass)
+                .addToBackStack(null)
                 .commit();
 
     }
